@@ -9,7 +9,7 @@ pg.defaults.ssl = true;
 
 const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.POSTGRESQL_URI;
-const { sequelize } = require('./models');
+const sequelize = require('./models').sequelize;
 var index = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');

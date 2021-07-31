@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const { Post, User } = require('../models');
+const User = require('../models').User;
 
 router.get('/', (req, res, next) => {
-  Post.findAll({
-    include: [{ model: User, as: 'user' }]
+  User.findAll({ 
+    attributes: { exclude: ['password'] }
   }).then(data => {
     res.status(200).send(data);
   }).catch(err => {

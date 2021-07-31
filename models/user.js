@@ -16,6 +16,16 @@ const User = sequelize.define('User', {
   password: {
     type: Sequelize.STRING(1024),
     allowNull: false
+  },
+  email: {
+    type: Sequelize.STRING(1024),
+    allowNull: false
+  },
+  salt: {
+    type: Sequelize.STRING(1024)
+  },
+  password_reset_code: {
+    type: Sequelize.STRING(1024)
   }}, 
   {
     createdAt: 'created_at',
