@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "db:fake": "node scripts/fake",
-    "db:drop": "node scripts/drop"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
