@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
   db: {  
     dialect: 'postgres',
     host: process.env.DB_HOST || 'localhost',

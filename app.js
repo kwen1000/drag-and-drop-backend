@@ -3,26 +3,31 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const pg = require('pg');
 const app = express();
+// const helmet = require('helmet');
+// const compression = require('compression');
+// const rateLimit = require('express-rate-limit');
+// const {body, check} = require('express-validator');
 
 require('dotenv').config();
 pg.defaults.ssl = true;
 
 const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.POSTGRESQL_URI;
-const sequelize = require('./models').sequelize;
-var index = require('./routes/index');
-var users = require('./routes/users');
-var posts = require('./routes/posts');
 
-sequelize.sync().then(() => {
+require('./models').sequelize.sync().then(() => {
   console.log('Synced PostgreSQL.');
 }).catch((err) => {
   console.log(err);
 });
 
-app.use('/', index);
-app.use('/get-users', users);
-app.use('/get-posts', posts);
+// app.use(compression());
+// app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/',                    require('./routes/index'));
+app.use('/api/auth/get-users',  require('./routes/users'));
+app.use('/api/auth/get-posts',  require('./routes/posts'));
+app.use("/api/auth/register",   require("./routes/register"));
+
 app.listen(PORT, () => console.log(`Port ${PORT} opened.`));
