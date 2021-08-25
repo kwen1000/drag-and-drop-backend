@@ -1,16 +1,24 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-function createJWT(payload) {
-  var result = null;
-  jwt.sign(payload, process.env.AUTH_SECRET, { expiresIn: '1w' }, function(err, token) {
-    if (err) {
-      result = null;
+function createJWT(res, useremail) {
+  jwt.sign(
+    { email: userEmail }, 
+    process.env.AUTH_SECRET, 
+    { expiresIn: '1w' },
+    (err, token) => {
+      if (err) {
+        res.status(401).send({ 
+          status: 'error', 
+          message: 'Token creation error.' 
+        });
+      } else {
+        res.status(200).send({
+          'status': 'success',
+          'token': token
+        });
+      }
     }
-    else {
-      result = token;
-    }
-  });
-  return result;
+  );
 }
 
 function verifyJWT(token) {
@@ -18,8 +26,7 @@ function verifyJWT(token) {
   jwt.verify(token, process.env.AUTH_SECRET, (err, decoded) => {
     if (err) {
       return false;
-    }
-    else {
+    } else {
       verified = true;
     }
   });

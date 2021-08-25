@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
-const Sequelize = require('sequelize');
 const pg = require('pg');
-const app = express();
+const ejs = require('ejs');
+const Sequelize = require('sequelize');
+
 // const helmet = require('helmet');
 // const compression = require('compression');
 // const rateLimit = require('express-rate-limit');
 // const {body, check} = require('express-validator');
+
+const app = express();
 
 require('dotenv').config();
 pg.defaults.ssl = true;
@@ -20,14 +23,19 @@ require('./models').sequelize.sync().then(() => {
   console.log(err);
 });
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
 // app.use(compression());
 // app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/',                    require('./routes/index'));
+app.use("/api/auth/register",   require("./routes/register"));
+app.use("/api/auth/login",      require("./routes/login"));
 app.use('/api/auth/get-users',  require('./routes/users'));
 app.use('/api/auth/get-posts',  require('./routes/posts'));
-app.use("/api/auth/register",   require("./routes/register"));
+app.use('/',                    require('./routes/index'));
+app.use('/api/auth/debug',      require('./routes/debug'));
 
 app.listen(PORT, () => console.log(`Port ${PORT} opened.`));
