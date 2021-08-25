@@ -14,7 +14,10 @@ router.post('/', (req, res, next) => {
   var userEmail = req.body.email;
   var userPass = req.body.password;
   if (!userEmail || !userPass) {
-    res.status(500).send({ message: "Email or password missing." })
+    res.status(401).send({ 
+      status: 'error', 
+      message: "Email or password missing." 
+    });
     return;
   }
   
@@ -23,7 +26,10 @@ router.post('/', (req, res, next) => {
   var passwordCheck = userPass.length > 3 && userPass.length < 512;
 
   if (!emailCheck || !passwordCheck) {
-    res.status(500).send({ message: 'Invalid email or password.' });
+    res.status(401).send({ 
+      status: 'error', 
+      message: 'Invalid email or password.' 
+    });
     return;
   }
   
@@ -37,15 +43,26 @@ router.post('/', (req, res, next) => {
       username: userEmail,
       password: hash
     }).then((item) => {
-      jwt.sign({ email: userEmail }, process.env.AUTH_SECRET, { expiresIn: '1w' }, (err, token) => {
-        if (err) {
-          res.status(500).send({ message: 'Token creation error.' })
-          return;
+      jwt.sign(
+        { email: userEmail }, 
+        process.env.AUTH_SECRET, 
+        { expiresIn: '1w' },
+        (err, token) => {
+          if (err) {
+            res.status(401).send({ 
+              status: 'error', 
+              message: 'Token creation error.' 
+            });
+          } else {
+            res.status(200).send({
+              'status': 'success',
+              'token': token
+            });
+          }
         }
-        res.status(200).send(token);
-      });
+      );
     }).catch((err) => {
-      res.status(500).send(err);
+      res.status(401).send(err);
     });
   });
 });

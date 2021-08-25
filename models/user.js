@@ -9,24 +9,18 @@ const User = sequelize.define('User', {
     primaryKey: true
   },
   username: {
-    type: Sequelize.STRING(1024),
+    type: Sequelize.STRING,
     allowNull: false,
     unique: true
   },
   password: {
-    type: Sequelize.STRING(1024),
+    type: Sequelize.STRING,
     allowNull: false
   },
   email: {
-    type: Sequelize.STRING(1024),
+    type: Sequelize.STRING,
     allowNull: false
-  },
-  salt: {
-    type: Sequelize.STRING(1024)
-  },
-  password_reset_code: {
-    type: Sequelize.STRING(1024)
-  }}, 
+  }},
   {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
