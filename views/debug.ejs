@@ -9,9 +9,16 @@
 
     <div>Login</div>
     <form method="POST" action="/api/auth/login">
-      <label for="email">Email</label><input type="text" name="email" /><br />
-      <label for="password">Password</label><input type="password" name="password" /><br />
+      <label for="email">Email</label><br /><input type="text" name="email" /><br />
+      <label for="password">Password</label><br /><input type="password" name="password" /><br />
       <input type="submit" value="Login" />
+    </form>
+    <br />
+    <div>Register</div>
+    <form method="POST" action="/api/auth/register">
+      <label for="email">Email</label><br /><input type="text" name="email" /><br />
+      <label for="password">Password</label><br /><input type="password" name="password" /><br />
+      <input type="submit" value="Register" />
     </form>
   </body>
 </html>

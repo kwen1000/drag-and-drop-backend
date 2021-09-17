@@ -4,11 +4,6 @@ const pg = require('pg');
 const ejs = require('ejs');
 const Sequelize = require('sequelize');
 
-// const helmet = require('helmet');
-// const compression = require('compression');
-// const rateLimit = require('express-rate-limit');
-// const {body, check} = require('express-validator');
-
 const app = express();
 
 require('dotenv').config();
@@ -26,8 +21,6 @@ require('./models').sequelize.sync().then(() => {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-// app.use(compression());
-// app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,6 +29,6 @@ app.use("/api/auth/login",      require("./routes/login"));
 app.use('/api/auth/get-users',  require('./routes/users'));
 app.use('/api/auth/get-posts',  require('./routes/posts'));
 app.use('/',                    require('./routes/index'));
-app.use('/api/auth/debug',      require('./routes/debug'));
+app.use('/debug',               require('./routes/debug'));
 
 app.listen(PORT, () => console.log(`Port ${PORT} opened.`));
