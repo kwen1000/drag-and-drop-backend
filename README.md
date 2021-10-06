@@ -6,12 +6,18 @@ You'll need a `.env` file.
 
 Your cloud provider should handle everything.
 
-## Virtual Machine (AWS EC2, GCP Compute, etc.)
+## Machine
 
-Not automated yet. Follow instructions for local deployment. Ubuntu 20+ image preferred.
-
-## Local (Mac/Ubuntu preferred)
+Set up server:
 
 `git clone [repository URL]`
+
 `npm install`
+
+Replace 3000 port with 80.
+
+Set up Postgres on another machine.
+
 `npm start`
+
+Detached mode coming soon.

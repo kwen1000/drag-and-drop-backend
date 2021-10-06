@@ -5,15 +5,13 @@ const User = require('./user');
 const Post = require('./post');
 
 User.hasMany(
-  Post, 
-  {
+  Post, {
     foreignKey: 'user_id',
     as: 'Posts'
   }
 );
 Post.belongsTo(
-  User, 
-  {
+  User, {
     foreignKey: 'user_id',
     constraints: false,
     as: 'User'
