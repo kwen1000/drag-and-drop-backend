@@ -10,6 +10,7 @@ User.hasMany(
     as: 'Posts'
   }
 );
+
 Post.belongsTo(
   User, {
     foreignKey: 'user_id',

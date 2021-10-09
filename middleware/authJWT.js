@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-function createJWT(res, useremail) {
+function createJWT(res, userEmail) {
   jwt.sign(
     { email: userEmail }, 
     process.env.AUTH_SECRET, 

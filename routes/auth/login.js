@@ -2,11 +2,12 @@ var express = require('express');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
-var { User } = require('../models');
+var { User } = require('../../models');
 
 var router = express.Router();
 
 router.post('/', (req, res, next) => {
+
   var useremail = req.body.email;
   var userpass = req.body.password;
   
@@ -21,8 +22,8 @@ router.post('/', (req, res, next) => {
   User.findOne({
     attributes: [ 'password' ],
     where: { email: useremail }
-  }).then((item) => {
-    if (item == null) {
+  }).then(item => {
+    if (item === null) {
       res.status(401).send({
         status: 'error',
         message: 'Email not found.'
@@ -30,8 +31,8 @@ router.post('/', (req, res, next) => {
       return;
     }
     bcrypt.compare(userpass, item.password)
-    .then((result) => {
-      if (result == true) {
+    .then(result => {
+      if (result === true) {
         jwt.sign(
           { email: useremail }, 
           process.env.AUTH_SECRET, 
@@ -57,9 +58,10 @@ router.post('/', (req, res, next) => {
         });
       }
     });
-  }).catch((err) => {
-      res.status(401).send(err);
+  }).catch(err => {
+    res.status(401).send(err);
   });
+
 });
 
 module.exports = router;

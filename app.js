@@ -6,11 +6,12 @@ const Sequelize = require('sequelize');
 
 const app = express();
 
+// .env file required
 require('dotenv').config();
 pg.defaults.ssl = true;
 
-const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.POSTGRESQL_URI;
+var PORT = 3000;
 
 require('./models').sequelize.sync().then(() => {
   console.log('Synced PostgreSQL.');
@@ -18,17 +19,27 @@ require('./models').sequelize.sync().then(() => {
   console.log(err);
 });
 
+// Use views for visual testing if
+// the command line is not enough 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(express.json());
+
+// Required for headers 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/auth/register",   require("./routes/register"));
-app.use("/api/auth/login",      require("./routes/login"));
-app.use('/api/auth/get-users',  require('./routes/users'));
-app.use('/api/auth/get-posts',  require('./routes/posts'));
-app.use('/',                    require('./routes/index'));
-app.use('/debug',               require('./routes/debug'));
+app.use('/', require('./routes/index'));
+app.use('/debug', require('./routes/debug'));
+app.use('/api/v1/auth/', require('./routes/auth'));
+app.use('/api/v1/lobby/', require('./routes/lobby/lobby'));
 
-app.listen(PORT, () => console.log(`Port ${PORT} opened.`));
+if (process.env.PRODUCTION == true) {
+  PORT = process.env.LOAD_PROD_PORT;
+} else {
+  PORT = process.env.LOAD_DEV_PORT
+}
+
+app.listen(PORT, () => 
+  console.log(`Port ${PORT} opened.`)
+);
