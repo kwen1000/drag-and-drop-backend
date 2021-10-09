@@ -3,17 +3,18 @@ var validator = require('email-validator');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
-var { User } = require('../models');
-var { createJWT, verifyJWT } = require('../middleware/authJWT');
+var { User } = require('../../models');
 
 var router = express.Router();
 
 const saltRounds = 10;
 
 router.post('/', (req, res, next) => {
-  var userEmail = req.body.email;
-  var userPass = req.body.password;
-  if (!userEmail || !userPass) {
+
+  var user_email = req.body.email;
+  var user_pass = req.body.password;
+  
+  if (!user_email || !user_pass) {
     res.status(401).send({ 
       status: 'error', 
       message: "Email or password missing." 
@@ -21,11 +22,10 @@ router.post('/', (req, res, next) => {
     return;
   }
   
-  /* TO-DO: better validation methods */
-  var emailCheck = validator.validate(userEmail);
-  var passwordCheck = userPass.length > 3 && userPass.length < 512;
+  var email_check = validator.validate(user_email);
+  var pass_check = user_pass.length > 3 && user_pass.length < 512;
 
-  if (!emailCheck || !passwordCheck) {
+  if (!email_check || !pass_check) {
     res.status(401).send({ 
       status: 'error', 
       message: 'Invalid email or password.' 
@@ -33,18 +33,20 @@ router.post('/', (req, res, next) => {
     return;
   }
   
-  bcrypt.hash(userPass, saltRounds, (err, hash) => {
+  bcrypt.hash(user_pass, saltRounds, (err, hash) => {
+  
     if (err) {
       res.status(500).send(err);
       return;
     }
+
     User.create({
-      email: userEmail,
-      username: userEmail,
+      email: user_email,
+      username: user_email,
       password: hash
-    }).then((item) => {
+    }).then(item => {
       jwt.sign(
-        { email: userEmail }, 
+        { email: user_email }, 
         process.env.AUTH_SECRET, 
         { expiresIn: '1w' },
         (err, token) => {
@@ -61,10 +63,11 @@ router.post('/', (req, res, next) => {
           }
         }
       );
-    }).catch((err) => {
+    }).catch(err => {
       res.status(401).send(err);
     });
   });
+  
 });
 
 module.exports = router;

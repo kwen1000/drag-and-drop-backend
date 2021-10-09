@@ -16,8 +16,7 @@ const Post = sequelize.define('Post', {
   },
   user_id: {
     type: Sequelize.INTEGER
-  }},
-  {
+  }}, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
     timestamps: true,

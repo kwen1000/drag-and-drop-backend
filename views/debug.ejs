@@ -2,6 +2,12 @@
 <html>
   <head>
     <title><%= title %></title>
+    <script>
+      function onClick(e) {
+      
+        document.querySelector("#secret").
+      }
+    </script>
   </head>
   <body>
     <h1><%= title %></h1>
@@ -13,12 +19,22 @@
       <label for="password">Password</label><br /><input type="password" name="password" /><br />
       <input type="submit" value="Login" />
     </form>
+    
     <br />
+    
     <div>Register</div>
     <form method="POST" action="/api/auth/register">
       <label for="email">Email</label><br /><input type="text" name="email" /><br />
       <label for="password">Password</label><br /><input type="password" name="password" /><br />
       <input type="submit" value="Register" />
     </form>
+    <br />
+    
+    <iv>Test latency</div>
+    <form>
+      <label for="password">API Secret</label><br /><input id="secret" type="password" name="password" /><br />
+      <input type="button" value="Test" />
+    </form>
+    
   </body>
 </html>

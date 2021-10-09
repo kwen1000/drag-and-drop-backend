@@ -20,8 +20,7 @@ const User = sequelize.define('User', {
   email: {
     type: Sequelize.STRING,
     allowNull: false
-  }},
-  {
+  }}, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
     timestamps: true,
