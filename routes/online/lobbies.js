@@ -11,15 +11,18 @@ const DISCONNECTED_TIME_MIL = 10000;
 
 router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) => {
   
+  if (!req.body) {
+    res.status(401).send({
+      'message': 'No JSON data.'
+    });
+    return;
+  }
+  
   var paddedID = parseInt(req.params.paddedID);
   var lobbyNumber = parseInt(req.params.lobbyNumber);
   var playerID = req.params.playerID;
-
+  var realID = Math.floor(paddedID/parseInt(process.env.SECRET_ID_MULTIPLIER);
   /* The multiplier helps limit attackers from guessing IDs */
-  var realID = Math.floor(
-    paddedID / 
-    parseInt(process.env.SECRET_ID_MULTIPLIER)
-  );
   
   User.findOne({ where: { id: realID } }).then(result => {
 
@@ -28,6 +31,7 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
         'message': 'Organization ID not found.'
       });
       return;
+
     }
 
     const maxLobbies = getLobbyAmount(result.dataValues.plan);
@@ -57,7 +61,8 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
          */
         Lobby.create({
           org_id: realID,
-          number: lobbyNumber
+          number: lobbyNumber,
+          current_data: {};
         });
         /* 
          * The player already has their own info, 
@@ -71,7 +76,7 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
 
       /* Otherwise, lobby found; update it */
 
-      var currentData = lobbyResult.dataValues.current_data;
+      var currentData = lobbyResult.dataValues.current_data || {};
       /*
        * Remove current player data so that it can be replaced
        * with latest data. Also, clean out disconnected players. 

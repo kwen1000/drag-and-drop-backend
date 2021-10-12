@@ -7,7 +7,7 @@ const Lobby = sequelize.define('Lobby', {
     allowNull: true
   },
   number: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
     allowNull: true
   },
   current_data: {
