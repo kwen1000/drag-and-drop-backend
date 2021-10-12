@@ -20,6 +20,10 @@ const User = sequelize.define('User', {
   email: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  plan: {
+    type: Sequelize.INTEGER,
+    allowNull: true // if null, then free plan
   }}, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',

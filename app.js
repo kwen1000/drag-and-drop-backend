@@ -2,44 +2,45 @@ const express = require('express');
 const path = require('path');
 const pg = require('pg');
 const ejs = require('ejs');
-const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
 
-const app = express();
+class App {
 
-// .env file required
-require('dotenv').config();
-pg.defaults.ssl = true;
+  constructor() {
 
-const DB_URI = process.env.POSTGRESQL_URI;
-var PORT = 3000;
+    var app = express();
+    var port = 3000;
 
-require('./models').sequelize.sync().then(() => {
-  console.log('Synced PostgreSQL.');
-}).catch((err) => {
-  console.log(err);
-});
+    dotenv.config();
+    pg.defaults.ssl = true;
 
-// Use views for visual testing if
-// the command line is not enough 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+    require('./models').sequelize.sync().then(() => {
+      console.log('Synced PostgreSQL.');
+    }).catch((err) => {
+      console.log(err);
+    });
 
-app.use(express.json());
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'ejs');
 
-// Required for headers 
-app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
-app.use('/', require('./routes/index'));
-app.use('/debug', require('./routes/debug'));
-app.use('/api/v1/auth/', require('./routes/auth'));
-app.use('/api/v1/lobby/', require('./routes/lobby/lobby'));
+    app.use('/', require('./routes/index'));
+    app.use('/debug', require('./routes/debug'));
+    app.use('/api/v1/auth/', require('./routes/auth'));
+    app.use('/api/v1/org/', require('./routes/online'));
 
-if (process.env.PRODUCTION == true) {
-  PORT = process.env.LOAD_PROD_PORT;
-} else {
-  PORT = process.env.LOAD_DEV_PORT
+    if (process.env.PRODUCTION == true) {
+      port = process.env.LOAD_PROD_PORT;
+    } else {
+      port = process.env.LOAD_DEV_PORT
+    }
+
+    app.listen(port, () => 
+      console.log(`Port ${port} opened.`)
+    );
+  }
 }
 
-app.listen(PORT, () => 
-  console.log(`Port ${PORT} opened.`)
-);
+new App();

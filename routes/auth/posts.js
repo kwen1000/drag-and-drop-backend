@@ -1,20 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const { Post, User } = require('../../models');
 
 router.get('/', (req, res, next) => {
 
   if (!req.header('apiKey')) {
-    return res.status(401).json({
-      status: 'error', 
+    res.status(401).json({
       message: 'API key missing.'
     });
+    return;
   } else if (req.header('apiKey') !== process.env.API_KEY) {
-    return res.status(401).json({
-      status: 'error', 
+    res.status(401).json({
       message: 'Unauthorized.'
     });
+    return;
   }
   
   Post.findAll({

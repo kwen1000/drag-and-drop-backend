@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const { User } = require('../../models');
 
@@ -13,16 +13,14 @@ router.get('/', (req, res, next) => {
 
   if (!header) {
     return res.status(401).json({
-      status: 'error', 
       message: 'Missing auth credentials.'
     });
-  } 
+  }
   
   let header_split = header.split(' ');
   
   if (header !== process.env.AUTH_SECRET) {
     return res.status(401).json({
-      status: 'error', 
       message: 'Unauthorized.'
     });
   }
