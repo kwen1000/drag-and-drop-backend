@@ -16,12 +16,13 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
       'message': 'No JSON data.'
     });
     return;
+
   }
   
   var paddedID = parseInt(req.params.paddedID);
   var lobbyNumber = parseInt(req.params.lobbyNumber);
   var playerID = req.params.playerID;
-  var realID = Math.floor(paddedID/parseInt(process.env.SECRET_ID_MULTIPLIER);
+  var realID = Math.floor(paddedID/parseInt(process.env.SECRET_ID_MULTIPLIER));
   /* The multiplier helps limit attackers from guessing IDs */
   
   User.findOne({ where: { id: realID } }).then(result => {
@@ -62,7 +63,7 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
         Lobby.create({
           org_id: realID,
           number: lobbyNumber,
-          current_data: {};
+          current_data: {}
         });
         /* 
          * The player already has their own info, 
