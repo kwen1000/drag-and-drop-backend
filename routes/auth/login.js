@@ -1,10 +1,10 @@
-var express = require('express');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-var { User } = require('../../models');
+const { User } = require('../../models');
 
-var router = express.Router();
+const router = express.Router();
 
 router.post('/', (req, res, next) => {
 
@@ -13,7 +13,6 @@ router.post('/', (req, res, next) => {
   
   if (!useremail || !userpass) {
     res.status(401).send({ 
-      status: 'error', 
       message: "Email or password missing." 
     })
     return;
@@ -25,7 +24,6 @@ router.post('/', (req, res, next) => {
   }).then(item => {
     if (item === null) {
       res.status(401).send({
-        status: 'error',
         message: 'Email not found.'
       });
       return;
@@ -40,12 +38,10 @@ router.post('/', (req, res, next) => {
           (err, token) => {
             if (err) {
               res.status(401).send({ 
-                status: 'error', 
                 message: 'Token creation error.' 
               });
             } else {
               res.status(200).send({
-                'status': 'success',
                 'token': token
               });
             }
@@ -53,7 +49,6 @@ router.post('/', (req, res, next) => {
         );
       } else {
         res.status(401).send({
-          status: 'error',
           message: 'Incorrect password.'
         });
       }

@@ -3,6 +3,7 @@ const sequelize = require('../config/sequelize');
 
 const User = require('./user');
 const Post = require('./post');
+const Lobby = require('./lobby');
 
 User.hasMany(
   Post, {
@@ -22,5 +23,6 @@ Post.belongsTo(
 module.exports = {
   sequelize,
   User,
-  Post
+  Post,
+  Lobby
 };
