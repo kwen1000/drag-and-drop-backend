@@ -10,7 +10,9 @@ Set up server:
 
 `npm install`
 
-Set up Postgres on another machine.
+You can set up PostgreSQL on another port or machine, or use a cloud provder. Remember to edit the `.env` file.
+
+To start:
 
 `npm start`
 
