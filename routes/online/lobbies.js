@@ -77,7 +77,7 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
 
       /* Otherwise, lobby found; update it */
 
-      var currentData = lobbyResult.dataValues.current_data || {};
+      var currentData = lobbyResult.dataValues.current_data || [];
       /*
        * Remove current player data so that it can be replaced
        * with latest data. Also, clean out disconnected players. 
