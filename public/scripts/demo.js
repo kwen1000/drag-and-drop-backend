@@ -104,8 +104,9 @@ function onLoad() {
 
         if (!config.chatHistory[data[i]['chat']]) {
           config.chatHistory[data[i]['chat']] = true;
-          document.querySelector('.chatField').innerHTML += 
-            '\n' + data[i]['username'] + ': ' + data[i]['chat'];
+          document.querySelector('.chatField').innerHTML = 
+            '\n' + data[i]['username'] + ': ' + data[i]['chat'] +
+            document.querySelector('.chatField').innerHTML;
         }
         
         if (data[i]['playerID'] == getPlayerID()) {
