@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "Questrial";
+  font-style: normal;
+  src: 
+    local('Questrial'), 
+    local('Questrial-Regular'), 
+    url(../fonts/questrial.tff) 
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Kumar';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: 
+    url(../fonts/kumarone.ttf) 
+    format('truetype');
+}
+
+@font-face {
+  font-family: "Lexend Deca";
+  font-style: normal;
+  src: 
+    local('Lexend-Deca'), 
+    local('Lexend-Deca-Regular'), 
+    url(../fonts/lexend.tff) 
+    format('truetype');
+}
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.section {
+  padding-bottom: 96px;
+  padding-top: 96px;
+}
+
+.section:first-child, 
+.section:nth-child(3), 
+.section:nth-child(5) {
+  color: #FFFFFF;
+  box-shadow: 0 0 50px 50px inset #000000;
+  background-image: url(../images/bg_deco.jpg);
+  background-size: 2100px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+div.column, 
+div.columns {
+  font-family: "Lexend Deca", Verdana;
+  font-weight: 100;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 10% 0;
+}
+
+.column p, 
+.columns p {
+  font-family: Questrial, Arial;
+  font-size: 18px;
+}
+
+h1 {
+  /* Controlled by viewport size  */
+}
+
+/* Larger than phablet */
+@media (min-width: 720px) {
+  h1 {
+    font-size: 96px;
+    line-height: 1;
+  }
+}
+
+img {
+  margin: 0 10%;
+  width: 80%;
+}
+
+button, 
+a.button {
+  border: none;
+  border-radius: 32px;
+  background-image: radial-gradient(#f4bf70, #e89b5c);
+  background-size: contain;
+  color: #000000;
+  font-family: Questrial;
+  font-size: 16px;
+  font-weight: normal;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-transform: none;
+  height: auto;
+} 
+
+button:hover, 
+a.button:hover {
+  color: #000000;
+}
+
+button:focus, 
+a.button:focus {
+  color: #000000;
+}
+
+input[type=text] {
+  color: #000000;
+}
+
+p.name {
+  font-family: Kumar;
+  font-size: 32px;
+}
+
+.transparent {
+  color: transparent;
+}
+
+.padLeft {
+  padding-left: 32px;
+}
+
+.terminal {
+  display: block;
+  width: 100%;
+}
+
+pre {
+  border-radius: 8px;
+  background-image: linear-gradient(45deg, #f4bf70, #e89b5c);
+  color: #000000;
+  padding: 16px;
+  margin: 0 42px;
+  white-space: pre-wrap;
+}
+
+.code-comment {
+  opacity: 0.5;
+}
+
+.mask {
+  overflow-x: scroll
+}
+
+.gallery-images {
+  display: table;
+}
+
+.gallery-image {
+  background-color: #FFFFFF;
+  background-size: cover;
+  background-position: center;
+  border: 16px solid #FFFFFF;
+  border-radius: 32px;
+  display: table-cell;
+  text-align: center;
+  transition: width 0.5s;
+  vertical-align: middle;
+  width: 160px;
+  height: 320px;
+  z-index: 100;
+}
+
+.gallery-image:hover {
+  width: 480px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .image {
+    border-width: 4px;
+    border-radius: 16px;
+    height: 240px;
+  }
+  .transparent { /* transparent mostly used for headers */
+    display: none;
+  }
+}

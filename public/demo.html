@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Demo</title>
+<meta name="description" content="">
+<meta name="author" content="Kevin Wen">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/demo.css">
+
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!--<link rel="icon" type="image/png" href="images/favicon.png">-->
+
+<script src="scripts/demo.js"></script>
+
+</head>
+<body>
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<div class="section hero">
+  <div class="container">
+    <div class="row">
+      <div class="full column">
+        <p>
+        If there is no one else to play with you, then launch another tab in private mode. 
+        Or use another device.<br /><br />
+        <form onsubmit="onSubmit(this); return false">
+          <label for="username">Pick a username (alphanumberic): </label>
+          <input type="text" id="username" pattern="[a-zA-Z0-9][a-zA-Z0-9]*" maxlength=20 /></br>
+          <input type="submit" value="Choose" />
+        </form>
+        </p>
+        <div class="game" id="game">
+          <span class="avatar" username="Noname">🙂</span>
+          <div class="canvas">
+            <span class="ground">
+              <span class="decoration" style="left: 100px; top: 100px">🌲</span>
+              <span class="decoration" style="left: 300px; top: 200px">🌵</span>
+              <span class="decoration" style="left: 300px; top: 500px">🌴</span>
+              <span class="decoration" style="left: 200px; top: 700px">🌲</span>
+              <span class="decoration" style="left: 400px; top: 800px">🌳</span>
+              <span class="decoration" style="left: 800px; top: 400px">🌳</span>
+              <span class="decoration" style="left: 900px; top: 200px">🌳</span>
+              <span class="decoration" style="left: 600px; top: 200px">🌳</span>
+              <span class="decoration" style="left: 600px; top: 300px">🌳</span>
+              <span class="decoration" style="left: 700px; top: 700px">🗿</span>
+              <span class="decoration" style="left: 400px; top: 200px">🌲</span>
+            </span>
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>
+
+<!-- End Document
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
