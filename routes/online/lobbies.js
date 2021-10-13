@@ -16,7 +16,6 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
       'message': 'No JSON data.'
     });
     return;
-
   }
   
   var paddedID = parseInt(req.params.paddedID);
@@ -63,13 +62,13 @@ router.post('/:paddedID/lobby/:lobbyNumber/player/:playerID', (req, res, next) =
         Lobby.create({
           org_id: realID,
           number: lobbyNumber,
-          current_data: {}
+          current_data: []
         });
         /* 
          * The player already has their own info, 
          * so no need to send info back.
          */
-        res.status(200).send({});
+        res.status(200).send([]);
 
         return; /* Player info will be stored when they POST again */
 

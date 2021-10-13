@@ -23,7 +23,7 @@ const User = sequelize.define('User', {
   },
   plan: {
     type: Sequelize.INTEGER,
-    allowNull: true // if null, then free plan
+    allowNull: true /* if null, then free plan */
   }}, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',

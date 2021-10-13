@@ -27,8 +27,6 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <!--<link rel="icon" type="image/png" href="images/favicon.png">-->
 
-<script src="scripts/demo.js"></script>
-
 </head>
 <body>
 
@@ -36,22 +34,27 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <div class="section hero">
+</div>
+<div class="section">
   <div class="container">
     <div class="row">
       <div class="full column">
         <p>
-        If there is no one else to play with you, then launch another tab in private mode. 
-        Or use another device.<br /><br />
-        <form onsubmit="onSubmit(this); return false">
-          <label for="username">Pick a username (alphanumberic): </label>
-          <input type="text" id="username" pattern="[a-zA-Z0-9][a-zA-Z0-9]*" maxlength=20 /></br>
-          <input type="submit" value="Choose" />
-        </form>
+          If there is no one else to play with you, then launch another tab in private mode. 
+          Or use another device. To move, use the scrollbars or scroll with touchpad. Works best with Chrome or Firefox on laptop/computer.<br /><br />
+          <form onsubmit="onSubmit(this); return false">
+            <label for="username">Pick a username (alphanumberic): </label>
+            <input type="text" id="username" pattern="[a-zA-Z0-9][a-zA-Z0-9]*" maxlength=20 /></br>
+            <input type="submit" value="Connect" /><br/><br/>
+          </form>
         </p>
         <div class="game" id="game">
           <span class="avatar" username="Noname">🙂</span>
           <div class="canvas">
             <span class="ground">
+              <span class="players">
+                <span class="template-user" username="Noname">🙂</span>
+              </span>
               <span class="decoration" style="left: 100px; top: 100px">🌲</span>
               <span class="decoration" style="left: 300px; top: 200px">🌵</span>
               <span class="decoration" style="left: 300px; top: 500px">🌴</span>
@@ -66,6 +69,12 @@
             </span>
           </div>
         </div>
+        <form onsubmit="onChat(); return false">
+          <input type="text" class="chatText" maxlength=200 />
+          <input type="submit" value="Chat" />
+        </form>
+        <pre class="chatField"></pre><br />
+        <input type="button" onclick="onDisconnect()" value="Disconnect from game" />
       </div>
    </div>
   </div>
@@ -73,5 +82,8 @@
 
 <!-- End Document
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<script src="scripts/demo.js"></script> 
+
 </body>
 </html>

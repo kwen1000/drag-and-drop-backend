@@ -1,12 +1,14 @@
 .canvas {
   background-color: #229944;
   display: block;
+  padding: 0;
   width: 400px;
   height: 300px;
   overflow: scroll;
 }
 
-.avatar {
+.avatar, 
+.template-user {
   color: #000000;
   font-family: monospace;
   font-size: 32px;
@@ -17,16 +19,17 @@
   z-index: 9;
 }
 
-.avatar::before {
+.avatar::after,
+.template-user::after {
   content: attr(username);
-  font-size: 12px;
+  font-size: 8px;
   color: #000000;
   display: block;
 }
 
 .ground {
   display: block;
-  margin: 200px;
+  margin: 132px 184px;
   width: 1000px;
   height: 1000px;
 }
