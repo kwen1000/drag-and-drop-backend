@@ -14,7 +14,7 @@ class App {
     dotenv.config();
     pg.defaults.ssl = true;
 
-    require('./models').sequelize.sync().then(() => {
+    require('./src/models').sequelize.sync().then(() => {
       console.log('Synced PostgreSQL.');
     }).catch((err) => {
       console.log(err);
@@ -23,14 +23,14 @@ class App {
     // app.set('views', './views');
     // app.set('view engine', 'ejs');
 
-    app.use(express.static('./public'));
+    app.use(express.static('./src/public'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    app.use('/', require('./routes/index'));
-    app.use('/debug', require('./routes/debug'));
-    app.use('/api/v1/auth/', require('./routes/auth'));
-    app.use('/api/v1/org/', require('./routes/online'));
+    app.use('/', require('./src/controllers/index'));
+    app.use('/debug', require('./src/controllers/debug'));
+    app.use('/api/v1/auth/', require('./src/controllers/auth'));
+    app.use('/api/v1/org/', require('./src/controllers/online'));
 
     if (process.env.PRODUCTION == true) {
       port = process.env.LOAD_PROD_PORT;
