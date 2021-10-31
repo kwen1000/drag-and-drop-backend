@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Sandcastle</title>
+<meta name="description" content="">
+<meta name="author" content="Kevin Wen">
+
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/main.css">
+
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!--<link rel="icon" type="image/png" href="images/favicon.png">-->
+
+<script src="scripts/index.js"></script>
+
+</head>
+<body>
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<div class="section hero">
+  <div class="container">
+    <div class="row">
+      <div class="full column">
+        <p class="name">Sandcastle</p>
+        <h1>Games should always be online. Always.</h1><br/><br/>
+        <a class="button center" href="#explore">Learn more</a> 
+        <a class="button center" href="demo.html">Skip to the demo</a>
+      </div>
+   </div>
+  </div>
+</div>
+<div class="section" id="explore">
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <h1>easy multi-player</h1>
+        <p>Games are fun when played with someone else. Sandcastle offers an intuitive and easy API to help your game. You'll never have to mess around with daunting cloud interfaces ever again.</p>
+      </div>
+      <div class="six columns">
+        <h1 class="transparent">api demo line</h1>
+        <pre>/api/v1/org/__/lobby/__/player/__<br /><span class="code-comment"># It's that simple</span></pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" name="resume">
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <h1 class="transparent">json</h1>
+        <pre>{ <br />username: "gamer1337", <br />position: [ -10, 120 ], <br />level: 42, <br />inventory: { "shovel", "sword" }, <br />currentBoard: { <br />  row1: { "X", "O", "X" }, <br />  row2: { "O", " ", " " }, <br />  row3: { "O", "X", "O" } }, <br />chat: "Hello! Prepare to lose." <br />}</pre>
+      </div>
+      <div class="six columns">
+        <h1>all you need is json</h1>
+        <p>3D open world? Got it. RPGs? You betcha. Puzzles? Couldn't be any easier. Your only task is to send JSON data and Sandcastle servers will take care of it. What you send is up to you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <h1>no one is left out</h1>
+        <p>Sandcastle's API is cross-platform, so you are not locked into an ecosystem. Players can have fun with strangers using different devices and operating systems.</p>
+      </div>
+      <div class="six columns">
+        <h1 style="text-align: center">😀🍎<br />😀🍎<br />😀🍎<br />😧🤖</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <h1>graviton to the rescue</h1>
+        <p>ARM processors and faster and more efficient than traditional desktop processors. Sandcastle is 100% powered by AWS's new Graviton2 processors. Our databases, load balancers, virtual machines, and caches will be quicker and smoother compared to servers running inefficient processors. Plus, you get the benefit of lower prices.</p>
+      </div>
+      <div class="six columns">
+        <h1 class="transparent">graviton to</h1>
+        <img class="image" src="images/graviton.png">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="full column">
+        <h1>FAQ</h1>
+        <p>Have a question? No worries.</p>
+        <pre>
+
+<span class="code-comment">### How do lobbies work?</span>
+
+Once you purchase your plan, all lobbies will immediately be accessible. For instance, if you purchase 1000 lobbies, then you can access lobby/1, lobby/2, lobby/3, ..., lobby/1000.
+
+<span class="code-comment">### How are username and account information being handled?</span>
+
+You can create as many "usernames" as you want. This is because Sandcastle does not permanently store user information. It's up to you on how to handle usernames and account information.
+
+Many application stores should allow players to backup local information to the cloud. If you can, proceed with that option.
+
+The only thing we require is that you provide a player ID. The player ID must be a positive integer. It should be unique. One way to make it unique is to use timestamps. The player's ID is the exact time that they launched their game for the first time. For instance, if they launched their game on the 15th of October, 2022 11:30:45.367, then their player ID could be 15102022113045367. You can also use Unix Epoch.
+
+We plan on releasing an option for storing account information later on, especially for web-based games.
+
+<span class="code-comment">### Are passwords and email required?</span>
+
+Sandcastle not only wants to limit the barrier to entry for you, but also for the player as well. Having to memorize a password and entering user email is too cumbersome.
+
+With that said, plans for adding password and email is on the horizon with the ability to store account information.
+
+<span class="code-comment">### How much data can I send?</span>
+
+JSON data is capped at 1 kilobytes (around 1000 characters). It's beneficial to keep data small as some players might not have good Internet.
+
+<span class="code-comment">### What data can I send?</span>
+
+Anything that is compatible with JSON.
+
+<span class="code-comment">### What about leaderboards?</span>
+
+Leaderboards coming soon! The plan is that each game will be given a leaderboard that can hold 1000 accounts and can be reset monthly, yearly, or biyearly.
+
+<span class="code-comment">### How about sending and receiving files and images?</span>
+
+They're not supported at the time. If you just need profile pictures, your application store might have an API that provides the URL of profile pictures. One creative way is to use emojis for profile pictures.
+
+One workaround is to host your own files and images and send the URLs instead.
+
+<span class="code-comment">### What about attackers?</span>
+
+You'll have the option to create a token that can be sent with the JSON.
+
+For open source or web games, an option to block abusive IP addresses will be available later on.
+
+<span class="code-comment">### Isn't HTTP slower than TCP?</span>
+
+With the acceleration of fiber-optics, 5G, faster processors, and more efficient storage, using HTTP is more feasible than ever.
+
+Our servers can process information up to 1/100 of a second on HTTP with ideal Internet, but real world speed will be slower depending on the player's connection. 
+
+</pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="full column">
+        <a class="button" href="index.html">Home</a>
+        <a class="button" href="demo.html">Demo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Document
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

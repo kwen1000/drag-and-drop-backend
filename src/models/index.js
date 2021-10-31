@@ -1,16 +1,16 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/sequelize');
+const Sequelize = require('sequelize')
+const sequelize = require('../config/sequelize')
 
-const User = require('./user');
-const Post = require('./post');
-const Lobby = require('./lobby');
+const User = require('./user')
+const Post = require('./post')
+const Lobby = require('./lobby')
 
 User.hasMany(
   Post, {
     foreignKey: 'user_id',
     as: 'Posts'
   }
-);
+)
 
 Post.belongsTo(
   User, {
@@ -18,11 +18,12 @@ Post.belongsTo(
     constraints: false,
     as: 'User'
   }
-);
+)
 
 module.exports = {
   sequelize,
   User,
   Post,
   Lobby
-};
+}
+

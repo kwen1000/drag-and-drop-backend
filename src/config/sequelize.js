@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const config = require('./env');
+const Sequelize = require('sequelize')
+const config = require('./env')
 
 const sequelize = new Sequelize({
   database: config.db.database,
@@ -13,7 +13,8 @@ const sequelize = new Sequelize({
       require: true,
       rejectUnauthorized: false
     }
-  },
-});
+  }
+})
 
-module.exports = sequelize;
+module.exports = sequelize
+

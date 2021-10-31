@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/sequelize');
+const Sequelize = require('sequelize')
+const sequelize = require('../config/sequelize')
 
 const Lobby = sequelize.define('Lobby', {
   org_id: {
@@ -11,9 +11,10 @@ const Lobby = sequelize.define('Lobby', {
     allowNull: true
   },
   current_data: {
-    type: Sequelize.ARRAY(Sequelize.JSON), 
+    type: Sequelize.ARRAY(Sequelize.JSON),
     allowNull: true
   }
-});
+})
 
-module.exports = Lobby;
+module.exports = Lobby
+

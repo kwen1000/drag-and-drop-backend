@@ -1,0 +1,42 @@
+.canvas {
+  background-color: #229944;
+  display: block;
+  padding: 0;
+  width: 400px;
+  height: 300px;
+  overflow: scroll;
+}
+
+.avatar, 
+.template-user {
+  color: #000000;
+  font-family: monospace;
+  font-size: 32px;
+  line-height: 1;
+  position: relative;
+  left: 180px;
+  top: 166px;
+  z-index: 9;
+}
+
+.avatar::after,
+.template-user::after {
+  content: attr(username);
+  font-size: 8px;
+  color: #000000;
+  display: block;
+}
+
+.ground {
+  display: block;
+  margin: 132px 184px;
+  width: 1000px;
+  height: 1000px;
+}
+
+.decoration {
+  position: relative;
+  transform: scale(10);
+  display: inline-block;
+  z-index: 10;
+}

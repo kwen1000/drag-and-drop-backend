@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/sequelize');
+const Sequelize = require('sequelize')
+const sequelize = require('../config/sequelize')
 
 const User = sequelize.define('User', {
   id: {
@@ -23,14 +23,16 @@ const User = sequelize.define('User', {
   },
   plan: {
     type: Sequelize.INTEGER,
-    allowNull: true // if null, then free plan
-  }}, {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-    timestamps: true,
-    underscored: true,
-    underscoredAll: true
+    allowNull: true
   }
-);
+}, {
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+  timestamps: true,
+  underscored: true,
+  underscoredAll: true
+}
+)
 
-module.exports = User;
+module.exports = User
+

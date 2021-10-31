@@ -2,7 +2,7 @@
 
 You'll need a `.env` file. An example is provided.
 
-## Machine
+## Installation
 
 Set up server:
 

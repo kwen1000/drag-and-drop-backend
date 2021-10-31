@@ -1,15 +1,14 @@
 {
   "name": "drag-and-drop-backend",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "jest",
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kevin Wen",
   "dependencies": {
     "async": "^3.2.0",
     "bcrypt": "^5.0.1",
@@ -18,6 +17,7 @@
     "ejs": "^3.1.6",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
+    "got": "^11.8.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
