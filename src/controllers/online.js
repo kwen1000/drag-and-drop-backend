@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const app = express();
+const app = express()
 
-app.use('/', require('./online/lobbies'));
+app.use('/', require('./online/lobbies'))
 
-module.exports = app;
+module.exports = app
+

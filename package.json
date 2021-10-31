@@ -8,8 +8,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kevin Wen",
   "dependencies": {
     "async": "^3.2.0",
     "bcrypt": "^5.0.1",
