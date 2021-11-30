@@ -21,6 +21,14 @@ const User = sequelize.define('User', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  access_token: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  refresh_token: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   plan: {
     type: Sequelize.INTEGER,
     allowNull: true
@@ -31,8 +39,7 @@ const User = sequelize.define('User', {
   timestamps: true,
   underscored: true,
   underscoredAll: true
-}
-)
+})
 
 module.exports = User
 
