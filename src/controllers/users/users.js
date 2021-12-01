@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
 
   let headerSplit = header.split(' ')
 
-  if (headerSplit[0] === auth_prefix_jwt) {
+  if (headerSplit[0] == auth_prefix_jwt) {
     User.findOne({ 
       where: { access_token: headerSplit[1] } 
     }).then(data => {
