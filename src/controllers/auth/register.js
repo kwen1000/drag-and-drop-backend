@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
   const user_pass = req.body.password
 
   if (!user_email || !user_pass) {
-    res.status(401).send({
+    res.status(400).send({
       message: 'Email or password missing.'
     })
     return
@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
   const pass_check = user_pass.length > 3 && user_pass.length < 512
 
   if (!email_check || !pass_check) {
-    res.status(401).send({
+    res.status(400).send({
       message: 'Invalid email or password.'
     })
   } else {
@@ -45,19 +45,25 @@ router.post('/', (req, res, next) => {
           { expiresIn: '1w' },
           (err, token) => {
             if (err) {
-              res.status(401).send({
+              res.status(500).send({
                 message: 'Token creation error.'
               })
             } else {
               res.status(200).send({
                 token: token
               })
+
+              User.update({
+                access_token: token
+              }, { 
+                where: { email: user_email } }
+              )
             }
           }
 
         )
       }).catch(err => {
-        res.status(401).send(err)
+        res.status(500).send(err)
       })
     })
   }

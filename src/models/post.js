@@ -23,8 +23,7 @@ const Post = sequelize.define('Post', {
   timestamps: true,
   underscored: true,
   underscoredAll: true
-}
-)
+})
 
 module.exports = Post
 

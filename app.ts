@@ -5,14 +5,14 @@ const ejs = require('ejs')
 const dotenv = require('dotenv')
 
 const app = express()
-let port = 3000
+let port: number = 3000;
 
 dotenv.config()
 pg.defaults.ssl = true
 
 require('./src/models').sequelize.sync().then(() => {
   console.log('Synced PostgreSQL.')
-}).catch((err) => {
+}).catch(err => {
   console.log(err)
 })
 
@@ -25,14 +25,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', require('./src/controllers/index'))
 app.use('/debug', require('./src/controllers/debug'))
+app.use('/api/v1/users/', require('./src/controllers/users/users'))
+app.use('/api/v1/posts/', require('./src/controllers/posts/posts'))
 app.use('/api/v1/auth/', require('./src/controllers/auth'))
 app.use('/api/v1/org/', require('./src/controllers/online'))
 
-if (process.env.PRODUCTION == 'true') {
-  port = parseInt(process.env.LOAD_PROD_PORT)
-} else {
-  port = parseInt(process.env.LOAD_DEV_PORT)
-}
+port = parseInt(process.env.PORT)
 
 app.listen(port, () =>
   console.log(`Port ${port} opened.`)

@@ -5,7 +5,7 @@ const { Post, User } = require('../../models')
 
 router.get('/', (req, res, next) => {
   if (!req.header('apiKey')) {
-    res.status(401).json({
+    res.status(400).json({
       message: 'API key missing.'
     })
     return
