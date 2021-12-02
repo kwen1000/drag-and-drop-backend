@@ -5,7 +5,7 @@ const ejs = require('ejs')
 const dotenv = require('dotenv')
 
 const app = express()
-let port: number = 3000;
+let port = 3000
 
 dotenv.config()
 pg.defaults.ssl = true
@@ -35,3 +35,4 @@ port = parseInt(process.env.PORT)
 app.listen(port, () =>
   console.log(`Port ${port} opened.`)
 )
+

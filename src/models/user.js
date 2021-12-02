@@ -29,6 +29,14 @@ const User = sequelize.define('User', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  administrator: {
+    type: Sequelize.BOOLEAN,
+    default: false
+  }, 
+  moderator: {
+    type: Sequelize.BOOLEAN,
+    default: false
+  }, 
   plan: {
     type: Sequelize.INTEGER,
     allowNull: true

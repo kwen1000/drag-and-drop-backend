@@ -27,7 +27,7 @@ router.get('/', (req, res, next) => {
       where: { access_token: headerSplit[1] } 
     }).then(data => {
       if (!data) {
-        res.status(400).send({ message: 'Invalid auth token.' })
+        res.status(400).send({ message: 'Invalid access token.' })
       } else {
         User.findAll({
           where: { username: req.body.username },
@@ -46,6 +46,29 @@ router.get('/', (req, res, next) => {
       message: 'Invalid auth header.'
     })
   }
+})
+
+router.post('/me', (req, res, next) => {
+  const header = req.header(auth_header)
+
+  if (!header) {
+    return res.status(400).send({
+      message: 'Missing auth credentials.'
+    })
+  }
+
+  const headerSplit = header.split(' ')
+
+  User.findOne({
+    where: { access_token: headerSplit[1] },
+    attributes: [ 'email', 'username' ]
+  }).then(data => {
+    if (!data) {
+      res.status(400).send({ message: 'Invalid access token.' })
+    } else {
+      res.status(200).send(data)
+    }
+  })
 })
 
 module.exports = router
