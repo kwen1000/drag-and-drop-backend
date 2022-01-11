@@ -1,4 +1,4 @@
-# Flexible Backend Service
+# Flexible Backend as a Service
 
 You'll need a `.env` file. An example is provided.
 
