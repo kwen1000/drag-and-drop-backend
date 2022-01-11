@@ -1,4 +1,4 @@
-# drag-and-drop-backend
+# Flexible Backend Service
 
 You'll need a `.env` file. An example is provided.
 
